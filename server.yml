@@ -1,0 +1,13 @@
+---
+- name: installing java
+hosts: test
+become: true
+tasks:
+- name: java
+apt: name=openjdk-11-jdk state=latest
+- name: installing Mysql
+hosts: prod
+become: true
+tasks:
+- name: mysql
+apt: name=mysql-server state=latest

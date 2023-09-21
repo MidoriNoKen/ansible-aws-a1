@@ -1,0 +1,16 @@
+---
+- name: Install MySQL on Slave 2
+  hosts: slave2
+  become: yes
+
+  tasks:
+    - name: Update APT package cache
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install MySQL Server
+      apt:
+        name: mysql-server
+        state: present
+      when: ansible_os_family == "Debian"
